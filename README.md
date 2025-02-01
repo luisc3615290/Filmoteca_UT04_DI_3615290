@@ -2,7 +2,7 @@
 - **Curso**: Desarrollo de Aplicaciones Multiplataforma
 - **Asignatura**: Desarrollo de Interfaces 2024/2025
 - **Alumno**: Luis Andrés Cabezos Esaprcia
-- **NRE**: 3615290
+- **NRE**: 3615290 
 
 # Release 1.2
 01/02/2025
