@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainApp extends Application {
+    private DatosFilmoteca datosFilmoteca = DatosFilmoteca.getInstancia();
+    private ObservableList<Pelicula> listaPeliculas = DatosFilmoteca.getInstancia().getListaPeliculas();
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -29,29 +31,24 @@ public class MainApp extends Application {
     }
 
     public void init() {
-        System.out.println("Cargando datos desde fichero datos/peliculas.json");
-        DatosFilmoteca datosFilmoteca = DatosFilmoteca.getInstancia();
+        //System.out.println("Cargando datos desde fichero datos/peliculas.json");
         ObjectMapper objectMapper = new ObjectMapper();
-
         try {
-            List<Pelicula> lista = objectMapper.readValue(new File("datos/peliculas.json"),
-                                    objectMapper.getTypeFactory().constructCollectionType(List.class, Pelicula.class));
+            File archivoFilmoteca = new File("datos/peliculas.json");
+            List<Pelicula> listaPeliculas = objectMapper.readValue(archivoFilmoteca,objectMapper.getTypeFactory().constructCollectionType(List.class, Pelicula.class));
 
-            datosFilmoteca.getListaPeliculas().setAll(lista);
+            datosFilmoteca.getListaPeliculas().setAll(listaPeliculas);
         } catch (IOException e){
             System.out.println("ERROR al cargar los datos. La aplicación no puede iniciarse");
             e.printStackTrace();
             System.exit(1);
         }
-
-        System.out.println(datosFilmoteca.getListaPeliculas());
+        //System.out.println(datosFilmoteca.getListaPeliculas());
     }
 
     public void stop() {
-        ObservableList<Pelicula> listaPeliculas = DatosFilmoteca.getInstancia().getListaPeliculas();
-        System.out.println(listaPeliculas);
+        //System.out.println(listaPeliculas);
         ObjectMapper objectMapper = new ObjectMapper();
-
         try {
             objectMapper.writeValue(new File("datos/peliculas2.json"),listaPeliculas);
         }catch (IOException e) {
