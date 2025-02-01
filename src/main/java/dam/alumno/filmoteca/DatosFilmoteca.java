@@ -11,7 +11,7 @@ public class DatosFilmoteca {
     private static void DatosFilmoteca () {
     }
 
-    public static DatosFilmoteca  getInstancia() {
+    public static DatosFilmoteca getInstancia() {
         if (instancia == null) {
             instancia = new DatosFilmoteca();
         }
