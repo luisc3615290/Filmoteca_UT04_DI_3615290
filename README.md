@@ -1,1 +1,9 @@
-Filmoteca_UT04_DI_3615290
+- **Tarea**: UT04
+- **Curso**: Desarrollo de Aplicaciones Multiplataforma
+- **Asignatura**: Desarrollo de Interfaces 2024/2025
+- **Alumno**: Luis Andrés Cabezos Esaprcia
+- **NRE**: 3615290
+
+# Release 1.0
+01/02/2025
+- Se sube el proyecto inicial a github
