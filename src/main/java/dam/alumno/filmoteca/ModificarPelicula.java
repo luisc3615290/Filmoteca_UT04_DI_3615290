@@ -43,7 +43,6 @@ public class ModificarPelicula {
         sldSliderRating.setMajorTickUnit(2.0);
         sldSliderRating.setShowTickLabels(true);
 
-
     }
     public void handlerGetRating(MouseEvent mouseDragEvent) {
         String formattedValue = String.format("%.1f",sldSliderRating.getValue());
@@ -64,8 +63,6 @@ public class ModificarPelicula {
         PeliculaNew.setId(String.valueOf(DatosFilmoteca.getSize()+1));
         PeliculaNew.setPoster(inputUrlPoster.getText());
         PeliculaNew.setRating(formattedRating);
-
-
 
         listaPeliculasNew.add(PeliculaNew);
 

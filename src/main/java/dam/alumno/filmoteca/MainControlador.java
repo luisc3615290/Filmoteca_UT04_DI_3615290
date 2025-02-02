@@ -75,6 +75,7 @@ public class MainControlador {
     private DatosFilmoteca datosFilmoteca = DatosFilmoteca.getInstancia();
     private ObservableList<Pelicula> listaPeliculas;
     private int indexSeleccionado;
+    public static final int indexActual = 0;
 
     public void initialize(){
         panelInvisible();
@@ -95,9 +96,8 @@ public class MainControlador {
         txtDirector.setText("");
         txtAreaDescription.setText("");
         txtRating.setText("");
-        //hyperlinkDescargar.setText("");
 
-        //Llenar la tabla izquierad
+        //Llenar la tabla izquierda
         listaPeliculas = datosFilmoteca.getListaPeliculas();
         colId.setCellValueFactory(new PropertyValueFactory<Pelicula,String>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<Pelicula,String>("title"));
@@ -111,7 +111,7 @@ public class MainControlador {
                 panelVisible();
                 //listaPeliculas.remove(indexSeleccionado);
                 txtId.setText(newValue.getId());
-                txtYear.setText(String.valueOf(newValue.getYear()));
+                txtYear.textProperty().bind(newValue.yearProperty().asString());
                 txtNombrePelicula.textProperty().bind(newValue.titleProperty());
                 txtDirector.textProperty().bind(newValue.directorProperty());
                 txtAreaDescription.textProperty().bind(newValue.descriptionProperty());
@@ -138,6 +138,7 @@ public class MainControlador {
     }
 
     public void handleNuevaPelicula(ActionEvent actionEvent) {
+        //indexActual = tablaPeliculas.getSelectionModel().getSelectedIndex();
         Scene escenaModificar = null;
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("ModificarPeliculaView.fxml"));
         try{
@@ -150,7 +151,6 @@ public class MainControlador {
         st.setScene(escenaModificar);
         st.setTitle("Añadir Película");
         st.showAndWait();
-
     }
 
     public void handleModificarPelicula(ActionEvent actionEvent) {
