@@ -2,7 +2,13 @@
 - **Curso**: Desarrollo de Aplicaciones Multiplataforma
 - **Asignatura**: Desarrollo de Interfaces 2024/2025
 - **Alumno**: Luis Andrés Cabezos Esaprcia
-- **NRE**: 3615290 
+- **NRE**: 3615290
+
+# Release 2.2
+02/02/2025
+- Cambios menores hechos, solo falta que la app no cree un nuevo registro cada vez que modifica uno existente
+- Queda también la implementación del Genre (array)
+- Para acabar faltaría tocar algo más de estilo
 
 # Release 2.1
 02/02/2025
