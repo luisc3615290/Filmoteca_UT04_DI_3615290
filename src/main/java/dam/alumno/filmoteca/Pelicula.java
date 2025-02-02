@@ -9,6 +9,7 @@ public class Pelicula {
     private final StringProperty title = new SimpleStringProperty();
     private final IntegerProperty year = new SimpleIntegerProperty();
     private final StringProperty description = new SimpleStringProperty();
+    private final StringProperty director = new SimpleStringProperty();
     private final FloatProperty rating = new SimpleFloatProperty();
     private final StringProperty poster = new SimpleStringProperty();
 
@@ -17,11 +18,12 @@ public class Pelicula {
 
     }
 
-    public Pelicula(int id, String title, int year, String description, float rating, String poster) {
+    public Pelicula(int id, String title, int year, String description, String director, float rating, String poster) {
         this.id.set(id);
         this.title.set(title);
         this.year.set(year);
         this.description.set(description);
+        this.director.set(director);
         this.rating.set(rating);
         this.poster.set(poster);
     }
@@ -65,6 +67,9 @@ public class Pelicula {
     public String getDescription() {
         return description.get();
     }
+    public String getDirector() {
+        return director.get();
+    }
 
     public StringProperty descriptionProperty() {
         return description;
@@ -72,6 +77,9 @@ public class Pelicula {
 
     public void setDescription(String description) {
         this.description.set(description);
+    }
+    public void setDirector(String director) {
+        this.director.set(director);
     }
 
     public float getRating() {
@@ -105,6 +113,7 @@ public class Pelicula {
                 ", title=" + title +
                 ", year=" + year +
                 ", description=" + description +
+                ", director=" + director +
                 ", rating=" + rating +
                 ", poster=" + poster +
                 '}';

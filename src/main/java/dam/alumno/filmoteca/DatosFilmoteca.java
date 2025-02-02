@@ -6,7 +6,7 @@ import javafx.collections.ObservableList;
 public class DatosFilmoteca {
 
     private static DatosFilmoteca instancia = null;
-    private static ObservableList<Pelicula> listaPeliculas = FXCollections.observableArrayList();
+    private static final ObservableList<Pelicula> listaPeliculas = FXCollections.observableArrayList();
 
     private static void DatosFilmoteca () {
     }
@@ -22,7 +22,12 @@ public class DatosFilmoteca {
         return listaPeliculas;
     }
 
+    public static int getSize(){
+        return listaPeliculas.size();
+    }
+    /*
     public static void setListaPeliculas(ObservableList<Pelicula> listaPeliculas) {
         DatosFilmoteca.listaPeliculas = listaPeliculas;
     }
+     */
 }

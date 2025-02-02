@@ -1,0 +1,10 @@
+.hboxFilmoteca{
+    -fx-font-size: 16px;
+}
+.txtFilmotecaTitulo{
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+.col{
+    -fx-alignment: center;
+}

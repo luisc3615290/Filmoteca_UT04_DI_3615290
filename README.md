@@ -4,6 +4,11 @@
 - **Alumno**: Luis Andrés Cabezos Esaprcia
 - **NRE**: 3615290 
 
+# Release 2.0
+02/02/2025
+- Cambios mayores, la UI empieza a tener forma y ya hace retrieve del JSON en el tableview
+- Jugando con el main.css y elementos gráficos antes de empezar con los botones
+
 # Release 1.3
 01/02/2025
 - Cambio de scaffolding inicial de variables y cambios menores para empezar a trabajar el UI
