@@ -8,7 +8,7 @@ public class DatosFilmoteca {
     private static DatosFilmoteca instancia = null;
     private static final ObservableList<Pelicula> listaPeliculas = FXCollections.observableArrayList();
 
-    private static void DatosFilmoteca () {
+    private DatosFilmoteca() {
     }
 
     public static DatosFilmoteca getInstancia() {
