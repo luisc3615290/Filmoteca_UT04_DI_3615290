@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<HBox fx:id="hBoxFilmoteca" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam.alumno.filmoteca.MainControlador">
+   <children>
+      <TableView fx:id="tablaPeliculas" prefHeight="600.0" prefWidth="693.0">
+        <columns>
+            <TableColumn fx:id="colId" prefWidth="49.0" text="id" />
+          <TableColumn fx:id="colName" prefWidth="292.0" text="Name" />
+          <TableColumn fx:id="colYear" minWidth="0.0" prefWidth="48.0" text="Year" />
+            <TableColumn fx:id="colDirector" prefWidth="303.0" text="Director" />
+        </columns>
+      </TableView>
+      <AnchorPane prefHeight="600.0" prefWidth="507.0" stylesheets="@../../../main.css">
+         <children>
+            <Text fx:id="txtFilmotecaTitulo" layoutX="167.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de Filmoteca" />
+            <Label fx:id="lblId" layoutX="17.0" layoutY="95.0" text="id" />
+            <Text fx:id="txtId" layoutX="77.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtId" wrappingWidth="98.0" />
+            <Text fx:id="txtNombrePelicula" layoutX="13.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtTitle" wrappingWidth="412.0" />
+            <Label fx:id="lblYear" layoutX="17.0" layoutY="138.0" text="Year" />
+            <Text fx:id="txtYear" layoutX="77.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtYear" wrappingWidth="98.0" />
+            <Label fx:id="lblGenre" layoutX="15.0" layoutY="192.0" text="Genre" />
+            <Text fx:id="txtGenre" layoutX="77.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtGenre" wrappingWidth="98.0" />
+            <Label fx:id="lblDirector" layoutX="11.0" layoutY="250.0" text="Director" />
+            <Text fx:id="txtDirector" layoutX="77.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtDirector" wrappingWidth="98.0" />
+            <Label fx:id="lblDescription" layoutX="11.0" layoutY="300.0" text="Description" />
+            <Label fx:id="lblRating" layoutX="221.0" layoutY="432.0" text="Rating" />
+            <Slider fx:id="sliderRating" layoutX="265.0" layoutY="434.0" prefHeight="14.0" prefWidth="81.0" />
+            <Text fx:id="txtRating" layoutX="370.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtnota" />
+            <Hyperlink fx:id="hyperlinkDescargar" layoutX="265.0" layoutY="389.0" text="Descargar Poster" />
+            <ImageView fx:id="imgPoster" fitHeight="298.0" fitWidth="221.0" layoutX="205.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true" />
+            <Line endX="311.0" layoutX="113.0" layoutY="512.0" startX="-100.0" />
+            <Line endX="311.0" layoutX="112.0" layoutY="45.0" startX="-100.0" />
+            <ButtonBar layoutX="51.0" layoutY="513.0" prefHeight="40.0" prefWidth="375.0">
+              <buttons>
+                <Button fx:id="btnNueva" mnemonicParsing="false" text="Nueva" />
+                  <Button fx:id="btnModificar" mnemonicParsing="false" text="Modificar" />
+                  <Button fx:id="btnBorrar" mnemonicParsing="false" text="Borrar" />
+              </buttons>
+            </ButtonBar>
+            <Button fx:id="btnCerrar" layoutX="377.0" layoutY="561.0" mnemonicParsing="false" text="Cerrar" />
+            <TextArea fx:id="txtAreaDescription" layoutX="13.0" layoutY="323.0" prefHeight="167.0" prefWidth="174.0" text="dadsasdasdda" />
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>
