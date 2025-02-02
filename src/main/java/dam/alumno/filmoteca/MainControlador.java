@@ -190,6 +190,7 @@ public class MainControlador {
         confirmacionCierreApp();
     }
 
+
     public void handleDownload(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivos", "*.jpg", "*.png", "*.svg"));
