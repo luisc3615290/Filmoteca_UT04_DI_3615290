@@ -4,6 +4,13 @@
 - **Alumno**: Luis Andrés Cabezos Esaprcia
 - **NRE**: 3615290
 
+# Release 2.3
+02/02/2025
+- Cambios menores hechos, solo falta que la app no cree un nuevo registro cada vez que modifica uno existente > NO CONSEGUIDO
+- Queda también la implementación del Genre (array) > NO CONSEGUIDO
+- Para acabar faltaría tocar algo más de estilo > NO CONSEGUIDO
+
+
 # Release 2.2
 02/02/2025
 - Cambios menores hechos, solo falta que la app no cree un nuevo registro cada vez que modifica uno existente
