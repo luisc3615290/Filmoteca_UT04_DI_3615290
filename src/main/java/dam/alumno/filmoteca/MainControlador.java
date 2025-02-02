@@ -1,5 +1,7 @@
 package dam.alumno.filmoteca;
 //
+import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,9 +13,17 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 
 public class MainControlador {
     @FXML
@@ -51,15 +61,16 @@ public class MainControlador {
     public TableColumn<Pelicula,Integer> colYear;
     @FXML
     public TableColumn<Pelicula,String> colDirector;
+
     public Label lblId;
     public Label lblYear;
     public Label lblGenre;
     public Label lblDirector;
     public Label lblDescription;
+
     public Button btnNuevo;
     public Button btnModificar;
     public Button btnBorrar;
-
 
     private DatosFilmoteca datosFilmoteca = DatosFilmoteca.getInstancia();
     private ObservableList<Pelicula> listaPeliculas;
@@ -67,8 +78,7 @@ public class MainControlador {
 
     public void initialize(){
         panelInvisible();
-
-
+        //Styles
         hBoxFilmoteca.getStyleClass().add("hboxFilmoteca");
         txtFilmotecaTitulo.getStyleClass().add("txtFilmotecaTitulo");
         txtNombrePelicula.getStyleClass().add("txtNombrePelicula");
@@ -77,8 +87,7 @@ public class MainControlador {
         txtYear.getStyleClass().add("txt");
         txtDirector.getStyleClass().add("txt");
         txtRating.getStyleClass().add("txt");
-        //txtAreaDescription.getStyleClass().add("txt");
-
+        //Empty contents
         txtNombrePelicula.setText("");
         txtId.setText("");
         txtYear.setText("");
@@ -88,6 +97,7 @@ public class MainControlador {
         txtRating.setText("");
         //hyperlinkDescargar.setText("");
 
+        //Llenar la tabla izquierad
         listaPeliculas = datosFilmoteca.getListaPeliculas();
         colId.setCellValueFactory(new PropertyValueFactory<Pelicula,String>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<Pelicula,String>("title"));
@@ -98,15 +108,26 @@ public class MainControlador {
 
         tablaPeliculas.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue) ->{
             if (newValue != null){
+                panelVisible();
+                //listaPeliculas.remove(indexSeleccionado);
                 txtId.setText(newValue.getId());
                 txtYear.setText(String.valueOf(newValue.getYear()));
-                txtNombrePelicula.setText(newValue.getTitle());
-                txtDirector.setText(newValue.getDirector());
-                //txtGenre.setText(newValue.getGenre());
-                txtAreaDescription.setText(newValue.getDescription());
-                txtRating.setText(String.valueOf(newValue.getRating()));
+                txtNombrePelicula.textProperty().bind(newValue.titleProperty());
+                txtDirector.textProperty().bind(newValue.directorProperty());
+                txtAreaDescription.textProperty().bind(newValue.descriptionProperty());
+                txtRating.textProperty().bind(Bindings.createStringBinding(
+                        () -> String.format("%.1f", newValue.ratingProperty().get()), // Convierte Float a String con 1 decimal
+                        newValue.ratingProperty()
+                ));
                 imgPoster.setImage(new Image(newValue.getPoster()));
-                panelVisible();
+            }else {
+                txtId.textProperty().unbind();
+                txtYear.textProperty().unbind();
+                txtNombrePelicula.textProperty().unbind();
+                txtDirector.textProperty().unbind();
+                txtAreaDescription.textProperty().unbind();
+                txtRating.textProperty().unbind();
+                imgPoster.accessibleTextProperty().unbind();
             }
         });
     }
@@ -156,6 +177,7 @@ public class MainControlador {
         confirmacion.setContentText("Estás seguro?");
         confirmacion.showAndWait();
         if(confirmacion.getResult()==ButtonType.OK){
+            indexSeleccionado = tablaPeliculas.getSelectionModel().getSelectedIndex();
             //Se deja status = 0 porque es flujo de salida esperado y la aplicación funciona como se espera
             listaPeliculas.remove(indexSeleccionado);
         }
@@ -168,6 +190,50 @@ public class MainControlador {
         confirmacionCierreApp();
     }
 
+    public void handleDownload(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivos", "*.jpg", "*.png", "*.svg"));
+        Stage stage = (Stage) hyperlinkDescargar.getScene().getWindow();
+        File file = fileChooser.showSaveDialog(stage);
+        if (file != null) {
+            try {
+                URL url = new URL(hyperlinkDescargar.getText());
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setConnectTimeout(5000);
+                connection.setReadTimeout(5000);
+
+                // Leer el archivo desde la URL
+                try (InputStream inputStream = connection.getInputStream();
+                     FileOutputStream outputStream = new FileOutputStream(file)) {
+
+                    byte[] buffer = new byte[4096];
+                    int bytesRead;
+                    while ((bytesRead = inputStream.read(buffer)) != -1) {
+                        outputStream.write(buffer, 0, bytesRead);
+                    }
+
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "¡Descarga completa!", javafx.scene.control.ButtonType.OK);
+                    alert.setTitle("Descarga Completada");
+                    alert.setHeaderText(null);
+                    alert.showAndWait();
+                } catch (IOException ex) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Hubo un error al intentar descargar el archivo.", javafx.scene.control.ButtonType.OK);
+                    alert.setTitle("Error de descarga");
+                    alert.setHeaderText(null);
+                    alert.showAndWait();
+                }
+            } catch (ProtocolException e) {
+                throw new RuntimeException(e);
+            } catch (MalformedURLException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+    }
+
 
     private void confirmacionCierreApp(){
         Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
@@ -177,7 +243,14 @@ public class MainControlador {
         confirmacion.showAndWait();
         if(confirmacion.getResult()==ButtonType.OK){
             //Se deja status = 0 porque es flujo de salida esperado y la aplicación funciona como se espera
-            System.exit(0);
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {
+                objectMapper.writeValue(new File("datos/peliculas2.json"),listaPeliculas);
+                System.exit(0);
+            }catch (IOException e) {
+                System.out.println("ERROR no se ha podido guardar los datos de la aplicación");
+                e.printStackTrace();
+            }
         }
         else{
             confirmacion.close();

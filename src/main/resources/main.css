@@ -1,5 +1,6 @@
 .hboxFilmoteca{
     -fx-font-size: 16px;
+    -fx-text-fill: red;
 }
 .txtFilmotecaTitulo{
     -fx-font-size: 24px;
@@ -28,4 +29,5 @@
     -fx-font-size: 32px;
     -fx-text-alignment: center;
     -fx-font-weight: bold;
+    -fx-text-fill: red;
 }

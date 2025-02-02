@@ -25,9 +25,11 @@ public class DatosFilmoteca {
     public static int getSize(){
         return listaPeliculas.size();
     }
+
     /*
     public static void setListaPeliculas(ObservableList<Pelicula> listaPeliculas) {
         DatosFilmoteca.listaPeliculas = listaPeliculas;
     }
+
      */
 }
