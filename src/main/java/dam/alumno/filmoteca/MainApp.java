@@ -3,16 +3,13 @@ package dam.alumno.filmoteca;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
 import java.io.*;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainApp extends Application {
@@ -51,7 +48,6 @@ public class MainApp extends Application {
     }
 
     public void stop() {
-        //System.out.println(listaPeliculas);
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             objectMapper.writeValue(new File("datos/peliculas2.json"),listaPeliculas);

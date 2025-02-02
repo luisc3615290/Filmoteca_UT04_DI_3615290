@@ -38,7 +38,7 @@
             <Label fx:id="lblDescription" layoutX="12.0" layoutY="343.0" text="Description" />
             <Label fx:id="lblRating" layoutX="266.0" layoutY="468.0" text="Rating" />
             <Text fx:id="txtRating" layoutX="346.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtnota" />
-            <Hyperlink fx:id="hyperlinkDescargar" layoutX="267.0" layoutY="438.0" text="Descargar Poster" />
+            <Hyperlink fx:id="hyperlinkDescargar" layoutX="267.0" layoutY="438.0" onAction="#handleDownload" text="Descargar Poster" />
             <ImageView fx:id="imgPoster" fitHeight="298.0" fitWidth="221.0" layoutX="207.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true" />
             <Line endX="311.0" layoutX="113.0" layoutY="512.0" startX="-100.0" />
             <Line endX="311.0" layoutX="112.0" layoutY="45.0" startX="-100.0" />

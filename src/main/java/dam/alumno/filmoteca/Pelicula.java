@@ -2,6 +2,7 @@ package dam.alumno.filmoteca;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javafx.beans.property.*;
+import javafx.beans.value.ObservableValue;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Pelicula {
@@ -10,7 +11,7 @@ public class Pelicula {
     private final IntegerProperty year = new SimpleIntegerProperty();
     private final StringProperty description = new SimpleStringProperty();
     private final StringProperty director = new SimpleStringProperty();
-    private final FloatProperty rating = new SimpleFloatProperty();
+    private final DoubleProperty rating = new SimpleDoubleProperty();
     private final StringProperty poster = new SimpleStringProperty();
     //private final StringProperty genre = new SimpleStringProperty();
 
@@ -19,7 +20,7 @@ public class Pelicula {
 
     }
 
-    public Pelicula(String id, String title, int year, String description, String director, String genre, float rating, String poster) {
+    public Pelicula(String id, String title, int year, String description, String director, String genre, double rating, String poster) {
         this.id.set(id);
         this.title.set(title);
         this.year.set(year);
@@ -40,11 +41,11 @@ public class Pelicula {
     public String getGenre() {return genre.get();}
      */
     public String getDescription() {return description.get();}
-    public float getRating() {return rating.get();}
+    public double getRating() {return rating.get();}
     public String getPoster() {return poster.get();}
 
 
-    public void setId(String id) {this.id.set(id);    }
+    public void setId(String id) {this.id.set(id);}
     public void setTitle(String title) {this.title.set(title);}
     public void setYear(int year) {this.year.set(year);}
     public void setDescription(String description) {this.description.set(description);}
@@ -62,7 +63,7 @@ public class Pelicula {
     /*
     public StringProperty genreProperty() {return genre;}
     */
-    public FloatProperty ratingProperty() {return rating;}
+    public DoubleProperty ratingProperty() {return rating;}
     public StringProperty posterProperty() {return poster;}
 
 

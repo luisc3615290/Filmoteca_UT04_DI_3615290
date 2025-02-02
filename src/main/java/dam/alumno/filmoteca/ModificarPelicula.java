@@ -6,8 +6,11 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.text.DecimalFormat;
 
 public class ModificarPelicula {
     public Text txtTituloVentana;
@@ -32,26 +35,37 @@ public class ModificarPelicula {
     public void initialize(){
         txtTituloVentana.getStyleClass().add("txtTituloVentana");
         txtTituloVentana.setText("Añadir Film");
-        txtNotaRating.setVisible(false);
+
         sldSliderRating.setMin(0.0);
         sldSliderRating.setMax(10.0);
+        sldSliderRating.setShowTickMarks(true);
+        sldSliderRating.setBlockIncrement(0.5);
+        sldSliderRating.setMajorTickUnit(2.0);
+        sldSliderRating.setShowTickLabels(true);
+
+    }
+    public void handlerGetRating(MouseEvent mouseDragEvent) {
+        String formattedValue = String.format("%.1f",sldSliderRating.getValue());
+        txtNotaRating.setText(formattedValue);
     }
 
     public void handlerAceptar(ActionEvent actionEvent) {
         //Añadir al TableView y al resto que cuando se añade película hay que mostrarlo en pantalla
         Pelicula PeliculaNew = new Pelicula();
+
+        float rating = (float) sldSliderRating.getValue();
+        DecimalFormat ratingFloat =  new DecimalFormat("#.#");
+        float formattedRating = Float.parseFloat(ratingFloat.format(rating));
         PeliculaNew.setTitle(inputNombre.getText());
         PeliculaNew.setYear(Integer.parseInt(inputYear.getText()));
         PeliculaNew.setDirector(inputDirector.getText());
         PeliculaNew.setDescription(inputDescriptionPeli.getText());
         PeliculaNew.setId(String.valueOf(DatosFilmoteca.getSize()+1));
-        PeliculaNew.setPoster(inputUrlPoster.getText()); //Añadir listener
-        PeliculaNew.setRating((float) Math.floor((float) sldSliderRating.getValue()));
-        txtNotaRating.setText(String.valueOf(sldSliderRating.getValue()));
-        //txtNotaRating.setText(String.valueOf(pelicula.getRating()));
-        //imgViewPoster.setImage(new Image(pelicula.getPoster()));
+        PeliculaNew.setPoster(inputUrlPoster.getText());
+        PeliculaNew.setRating(formattedRating);
 
         listaPeliculasNew.add(PeliculaNew);
+
         Stage stageCerrar = (Stage)((Node)(actionEvent.getSource())).getScene().getWindow();
         stageCerrar.close();
     }
@@ -69,10 +83,17 @@ public class ModificarPelicula {
             inputDirector.setText(pelicula.getDirector());
             inputUrlPoster.setText(pelicula.getPoster());
             inputDescriptionPeli.setText(pelicula.getDescription());
-            txtNotaRating.setText(String.valueOf(pelicula.getRating()));
+            //txtNotaRating.setText(String.valueOf(pelicula.getRating()));
             txtNotaRating.setVisible(true);
-            imgViewPoster.setImage(new Image(pelicula.getPoster()));
+            sldSliderRating.setValue(pelicula.getRating());
+            //imgViewPoster.setImage(new Image(pelicula.getPoster()));
+            float rating = (float) sldSliderRating.getValue();
+            DecimalFormat ratingFloat =  new DecimalFormat("#.#");
+            float formattedRating = Float.parseFloat(ratingFloat.format(rating));
+            txtNotaRating.setText(String.valueOf(formattedRating));
 
         }
     }
+
+
 }

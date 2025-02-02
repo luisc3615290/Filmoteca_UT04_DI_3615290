@@ -6,27 +6,25 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="miPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../main.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam.alumno.filmoteca.ModificarPelicula">
     <children>
         <Label fx:id="lblNombrePeli" layoutX="36.0" layoutY="54.0" text="NOMBRE PELÍCULA" />
-        <Label fx:id="lblYearPeli" layoutX="36.0" layoutY="104.0" text="YEAR" />
-        <Label fx:id="lblDescripcionPeli" layoutX="31.0" layoutY="242.0" text="DESCRIPCIÓN" />
-        <Label fx:id="lblRatingPeli" layoutX="365.0" layoutY="305.0" text="RATING" />
-        <Label fx:id="lblDirector" layoutX="34.0" layoutY="153.0" text="DIRECTOR" />
-      <Label fx:id="lblUrlPoster" layoutX="32.0" layoutY="197.0" text="POSTER (URL)" />
-      <TextField fx:id="inputUrlPoster" layoutX="32.0" layoutY="213.0" prefHeight="25.0" prefWidth="300.0" />
+        <Label fx:id="lblYearPeli" layoutX="36.0" layoutY="114.0" text="YEAR" />
+        <Label fx:id="lblDescripcionPeli" layoutX="352.0" layoutY="50.0" text="DESCRIPCIÓN" />
+        <Label fx:id="lblRatingPeli" layoutX="364.0" layoutY="262.0" text="RATING" />
+        <Label fx:id="lblDirector" layoutX="35.0" layoutY="180.0" text="DIRECTOR" />
+      <Label fx:id="lblUrlPoster" layoutX="33.0" layoutY="237.0" text="POSTER (URL)" />
+      <TextField fx:id="inputUrlPoster" layoutX="33.0" layoutY="253.0" prefHeight="25.0" prefWidth="300.0" />
         <Text fx:id="txtTituloVentana" layoutX="238.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Placeholder" />
-        <Text fx:id="txtNotaRating" layoutX="556.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nota" />
-        <Slider fx:id="sldSliderRating" layoutX="416.0" layoutY="307.0" />
-        <TextArea fx:id="inputDescriptionPeli" layoutX="31.0" layoutY="261.0" prefHeight="124.0" prefWidth="300.0" wrapText="true" />
+        <Text fx:id="txtNotaRating" layoutX="555.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nota" />
+        <Slider fx:id="sldSliderRating" layoutX="415.0" layoutY="264.0" onMouseDragged="#handlerGetRating" onMouseReleased="#handlerGetRating" />
+        <TextArea fx:id="inputDescriptionPeli" layoutX="352.0" layoutY="69.0" prefHeight="172.0" prefWidth="243.0" wrapText="true" />
         <TextField fx:id="inputNombre" layoutX="34.0" layoutY="71.0" prefHeight="25.0" prefWidth="300.0" />
-        <TextField fx:id="inputYear" layoutX="33.0" layoutY="120.0" prefHeight="25.0" prefWidth="300.0" />
-        <TextField fx:id="inputDirector" layoutX="33.0" layoutY="169.0" prefHeight="25.0" prefWidth="300.0" />
-        <ImageView fx:id="imgViewPoster" fitHeight="236.0" fitWidth="200.0" layoutX="382.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" />
+        <TextField fx:id="inputYear" layoutX="33.0" layoutY="130.0" prefHeight="25.0" prefWidth="300.0" />
+        <TextField fx:id="inputDirector" layoutX="34.0" layoutY="196.0" prefHeight="25.0" prefWidth="300.0" />
         <ButtonBar layoutX="360.0" layoutY="346.0" prefHeight="40.0" prefWidth="226.0">
             <buttons>
                 <Button fx:id="Aceptar" mnemonicParsing="false" onAction="#handlerAceptar" text="Aceptar" />
