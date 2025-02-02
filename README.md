@@ -4,6 +4,13 @@
 - **Alumno**: Luis Andrés Cabezos Esaprcia
 - **NRE**: 3615290 
 
+# Release 2.1
+02/02/2025
+- Añadida segunda ventana
+- Comprobando funcionamiento de Nueva, modificar y cierre
+- Comprobando cambios menores
+- Approx 80% hecho
+
 # Release 2.0
 02/02/2025
 - Cambios mayores, la UI empieza a tener forma y ya hace retrieve del JSON en el tableview

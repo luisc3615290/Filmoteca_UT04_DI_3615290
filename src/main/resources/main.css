@@ -6,5 +6,26 @@
     -fx-font-weight: bold;
 }
 .col{
-    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+.txtNombrePelicula{
+    -fx-text-alignment: right;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-wrap-text: yes;
+}
+.imgPoster{
+    -fx-alignment: right;
+}
+.txt{
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+.button{
+    -fx-font-weight: bold;
+}
+.txtTituloVentana{
+    -fx-font-size: 32px;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
 }
