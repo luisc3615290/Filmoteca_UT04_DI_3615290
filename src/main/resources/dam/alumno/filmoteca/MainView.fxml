@@ -4,7 +4,6 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
@@ -27,32 +26,31 @@
       <AnchorPane prefHeight="600.0" prefWidth="507.0" stylesheets="@../../../main.css">
          <children>
             <Text fx:id="txtFilmotecaTitulo" layoutX="167.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de Filmoteca" />
-            <Label fx:id="lblId" layoutX="17.0" layoutY="95.0" text="id" />
-            <Text fx:id="txtId" layoutX="77.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtId" wrappingWidth="98.0" />
-            <Text fx:id="txtNombrePelicula" layoutX="13.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtTitle" wrappingWidth="412.0" />
-            <Label fx:id="lblYear" layoutX="17.0" layoutY="138.0" text="Year" />
-            <Text fx:id="txtYear" layoutX="77.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtYear" wrappingWidth="98.0" />
-            <Label fx:id="lblGenre" layoutX="15.0" layoutY="192.0" text="Genre" />
-            <Text fx:id="txtGenre" layoutX="77.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtGenre" wrappingWidth="98.0" />
-            <Label fx:id="lblDirector" layoutX="11.0" layoutY="250.0" text="Director" />
-            <Text fx:id="txtDirector" layoutX="77.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtDirector" wrappingWidth="98.0" />
-            <Label fx:id="lblDescription" layoutX="11.0" layoutY="300.0" text="Description" />
-            <Label fx:id="lblRating" layoutX="221.0" layoutY="432.0" text="Rating" />
-            <Slider fx:id="sliderRating" layoutX="265.0" layoutY="434.0" prefHeight="14.0" prefWidth="81.0" />
-            <Text fx:id="txtRating" layoutX="370.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtnota" />
-            <Hyperlink fx:id="hyperlinkDescargar" layoutX="265.0" layoutY="389.0" text="Descargar Poster" />
-            <ImageView fx:id="imgPoster" fitHeight="298.0" fitWidth="221.0" layoutX="205.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="lblId" layoutX="11.0" layoutY="107.0" text="id" />
+            <Text fx:id="txtId" layoutX="12.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtId" wrappingWidth="98.0" />
+            <Text fx:id="txtNombrePelicula" layoutX="13.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtTitle" wrappingWidth="387.0" />
+            <Label fx:id="lblYear" layoutX="11.0" layoutY="164.0" text="Year" />
+            <Text fx:id="txtYear" layoutX="12.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtYear" wrappingWidth="98.0" />
+            <Label fx:id="lblGenre" layoutX="11.0" layoutY="210.0" text="Genre" />
+            <Text fx:id="txtGenre" layoutX="73.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtGenre" wrappingWidth="98.0" />
+            <Label fx:id="lblDirector" layoutX="11.0" layoutY="235.0" text="Director" />
+            <Text fx:id="txtDirector" layoutX="12.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtDirector" wrappingWidth="102.0" />
+            <Label fx:id="lblDescription" layoutX="12.0" layoutY="343.0" text="Description" />
+            <Label fx:id="lblRating" layoutX="266.0" layoutY="468.0" text="Rating" />
+            <Text fx:id="txtRating" layoutX="346.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtnota" />
+            <Hyperlink fx:id="hyperlinkDescargar" layoutX="267.0" layoutY="438.0" text="Descargar Poster" />
+            <ImageView fx:id="imgPoster" fitHeight="298.0" fitWidth="221.0" layoutX="207.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true" />
             <Line endX="311.0" layoutX="113.0" layoutY="512.0" startX="-100.0" />
             <Line endX="311.0" layoutX="112.0" layoutY="45.0" startX="-100.0" />
-            <ButtonBar layoutX="51.0" layoutY="513.0" prefHeight="40.0" prefWidth="375.0">
+            <ButtonBar layoutX="41.0" layoutY="513.0" prefHeight="40.0" prefWidth="375.0">
               <buttons>
-                <Button fx:id="btnNueva" mnemonicParsing="false" text="Nueva" />
-                  <Button fx:id="btnModificar" mnemonicParsing="false" text="Modificar" />
-                  <Button fx:id="btnBorrar" mnemonicParsing="false" text="Borrar" />
+                  <Button fx:id="btnBorrar" mnemonicParsing="false" onAction="#handleBorrarPelicula" text="Borrar" />
+                  <Button fx:id="btnModificar" mnemonicParsing="false" onAction="#handleModificarPelicula" text="Modificar" />
+                <Button fx:id="btnNuevo" mnemonicParsing="false" onAction="#handleNuevaPelicula" text="Nueva" />
               </buttons>
             </ButtonBar>
-            <Button fx:id="btnCerrar" layoutX="377.0" layoutY="561.0" mnemonicParsing="false" text="Cerrar" />
-            <TextArea fx:id="txtAreaDescription" layoutX="13.0" layoutY="323.0" prefHeight="167.0" prefWidth="174.0" text="dadsasdasdda" />
+            <Button fx:id="btnCerrar" layoutX="367.0" layoutY="561.0" mnemonicParsing="false" onAction="#handleCerrar" text="Cerrar" />
+            <TextArea fx:id="txtAreaDescription" layoutX="12.0" layoutY="365.0" prefHeight="125.0" prefWidth="183.0" text="dadsasdasdda" wrapText="true" />
          </children>
       </AnchorPane>
    </children>

@@ -25,8 +25,9 @@ public class MainApp extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("MainView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), prefWidth, prefHeight);
-        stage.setTitle("Hello!");
+        stage.setTitle("Bienvenido al registro de la filmoteca 3615290!");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.getIcons().add(new Image(this.getClass().getResource("/img/video.png").toString()));
         stage.show();
     }
